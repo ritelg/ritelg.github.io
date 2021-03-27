@@ -9,7 +9,7 @@
     <div class="container">
 
         {%- include nav.html -%}
-        <div class="about">
+        <div class="a-propos">
             <h1>
                 <span class="light">
                     {% for categorie in site.categories %}
@@ -18,13 +18,55 @@
                         {% endif %}
                     {% endfor %}
                 </span>
-                {{ page.h1  }}
+                {{ page.h1 }}
             </h1>
             <p>{{ page.description }}</p>
         </div>
     </div>
 </header>
 {{ content }}
+<section class="projets-associes">
+    <h2>Dans la même categorie</h2>
+    <div class="grid">
+
+        <!--
+            Je commence par trié les projets selon un ordre donné
+            Ensuite pour chaque projet je regarde si il a une categorie associé avec le projet actuelle (Un projet peut appartenir à plusieurs categories)
+        -->
+        {% assign projets = site.projets | sort: "projets_order" %}
+
+        {% for projet in projets %}
+            {% assign afficher_projet = false %}
+
+            {% if projet.title != page.title %}
+                {% for categorie in projet.categories %}
+                    {% if page.categories contains categorie %}
+                        {% assign afficher_projet = true %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if afficher_projet == true %}
+                <a href="{{ projet.permalink }}" class="{% if projet.accueil_middle %}middle{% endif %}">
+                    <figure >
+                        <picture data-src="{{ projet.img }}" data-ext="jpg">
+                            <source media="(min-width: 1000px)" data-taille="" srcset="{{ site.url }}/images/rectangle16_9.svg">
+                            <source media="(min-width: 768px)" data-taille="large" srcset="{{ site.url }}/images/rectangle16_9.svg">
+                            <source media="(min-width: 450px)" data-taille="medium" srcset="{{ site.url }}/images/rectangle16_9.svg">
+                            <img src="{{ site.url }}/images/rectangle16_9.svg" data-taille="small" alt="{{ projet.title }}">
+                        </picture>
+                        <figcaption>
+                            <h3>{{ projet.title }}</h3>
+                            {% if projet.accueil_middle != true %}
+                                <p>{{ projet.description }}</p>
+                            {% endif %}
+                        </figcaption>
+                    </figure>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
 {%- include footer.html -%}
 
 </body>
