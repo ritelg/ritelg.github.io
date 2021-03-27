@@ -1,0 +1,80 @@
+---
+title: Mes projets
+description: "Voici quelques projets que j’ai pu réaliser pour des clients, pendant ma formation en web design ou en autodidacte pour approfondir mes connaissances."
+---
+<!DOCTYPE html>
+<html lang="fr">
+{%- include head.html -%}
+<body>
+<header>
+    <div class="container">
+        {%- include nav.html -%}
+        <div class="about">
+            <h1>
+                <span class="light">{{ site.nomcomplet }}</span>
+                {{ page.title }}
+            </h1>
+            <p>{{ page.description }}</p>
+        </div>
+    </div>
+</header>
+
+<section class="project-categories">
+    <h2>Catégories</h2>
+    <div class="list grid">
+        {% assign categories = site.categories | sort: "projets_order" %}
+        {% for categorie in categories %}
+            <a href="{{ categorie.url }}">
+                <figure>
+                    <picture data-src="{{ site.url }}{{ categorie.img }}" data-ext="jpg">
+                        <source media="(min-width: 1000px)" data-taille="" srcset="{{ site.images_url }}/rectangle16_9.svg">
+                        <source media="(min-width: 768px)" data-taille="large" srcset="{{ site.images_url }}/rectangle16_9.svg">
+                        <source media="(min-width: 450px)" data-taille="medium" srcset="{{ site.images_url }}/rectangle16_9.svg">
+                        <img src="{{ site.images_url }}/rectangle16_9.svg" data-taille="small" alt="{{ categorie.title }}">
+                    </picture>
+                    <figcaption>
+                        <h3>{{ categorie.title }}</h3>
+                    </figcaption>
+                </figure>
+            </a>
+        {% endfor %}
+    </div>
+</section>
+<section class="projects-a-l-une">
+    <h2>Projets à la une</h2>
+    <div class="list grid">
+        {% assign projets = site.projets | sort: "projets_order" %}
+        {% for projet in projets %}
+
+        {% if projet.projets_order %}
+        <a href="{{ projet.permalink }}" class="{% if projet.accueil_middle %}middle{% endif %}">
+            <figure >
+                <picture data-src="{{ projet.img }}" data-ext="jpg">
+                    <source media="(min-width: 1000px)" data-taille="" srcset="{{ site.url }}/images/rectangle16_9.svg">
+                    <source media="(min-width: 768px)" data-taille="large" srcset="{{ site.url }}/images/rectangle16_9.svg">
+                    <source media="(min-width: 450px)" data-taille="medium" srcset="{{ site.url }}/images/rectangle16_9.svg">
+                    <img src="{{ site.url }}/images/rectangle16_9.svg" data-taille="small" alt="{{ projet.title }}">
+                </picture>
+                <figcaption>
+                    <h3>{{ projet.title }}</h3>
+<!--                    <p class="light">-->
+<!--                        {% for categorie in site.categories %}-->
+<!--                            {% if page.categories contains categorie.title %}-->
+<!--                                {{ categorie.title }},-->
+<!--                            {% endif %}-->
+<!--                        {% endfor %}-->
+<!--                    </p>-->
+                    {% if projet.accueil_middle != true %}
+                        <p>{{ projet.description }}</p>
+                    {% endif %}
+                </figcaption>
+            </figure>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{%- include footer.html -%}
+</body>
+</html>

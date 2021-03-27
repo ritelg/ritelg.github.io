@@ -1,0 +1,29 @@
+body {
+  scroll-behavior: smooth;
+}
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+section, main { margin: 2.5rem 0; }
+picture {
+  opacity: 0;
+  transition: opacity .3s;
+}
+picture.active {
+  opacity: 1;
+}
+video {
+  border-radius: 5px;
+  overflow: hidden;
+}
+@media screen and (min-width: $width-labtop) {
+  .container {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+  section, main {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+}

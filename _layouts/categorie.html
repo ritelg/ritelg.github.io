@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{%- include head.html -%}
+
+<body>
+
+<header>
+    <div class="container">
+
+        {%- include nav.html -%}
+        <div class="about">
+            <h1>
+                <span class="light">{{ site.nomcomplet }}</span>
+                {{ page.title }}
+            </h1>
+            <p>{{ page.description }}</p>
+        </div>
+    </div>
+</header>
+
+<main class="grid categorie-item">
+    {% assign projets = site.projets | sort: "projets_order" %}
+    {% for projet in projets %}
+        {% if projet.categories contains page.title %}
+            <a href="{{ projet.permalink }}">
+                <figure>
+                    <picture data-src="{{ projet.img }}" data-ext="jpg">
+                        <img src="/images/rectangle16_9.svg" data-taille="small" alt="">
+                    </picture>
+                    <figcaption>
+                        <h3>{{ projet.title }}</h3>
+                        <p>
+                            {{ projet.description }}
+                        </p>
+                    </figcaption>
+                </figure>
+            </a>
+        {% endif %}
+    {% endfor %}
+</main>
+
+
+{%- include footer.html -%}
+
+</body>
+
+</html>
