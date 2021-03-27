@@ -6,10 +6,11 @@ help: ## Affiche cette aide
 
 .PHONY: deploy
 deploy: ## Build les assets et deploie le site
+	rm -Rf docs/*
+	rm -Rf _site/*
 	npm run prod
 	npm run jekyll_build
-	rm -Rf docs/*
-	cp -r ./_site/* ./docs/
+	cp -Rf _site/* docs
 	git add .
 	git commit -m "$(MESSAGE)"
 
