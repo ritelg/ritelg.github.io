@@ -10,7 +10,8 @@ deploy: ## Build les assets et deploie le site
 	rm -Rf _site/*
 	npm run prod
 	npm run jekyll_build
+	rm -Rf _site/docs
 	cp -Rf _site/* docs
-	cp .htaccess docs/
+	cp .htaccess _site/.htaccess
 	git add .
 	git commit -m "$(MESSAGE)"
