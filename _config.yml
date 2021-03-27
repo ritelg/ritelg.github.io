@@ -23,9 +23,12 @@ email: "ritelg@yahoo.fr"
 description: >-
   Titulaire d’un titre professionnel de web designer, autodidacte et en constante veille technologique, je conçois et réalise des supports de communication visuelle, des sites et des applications web.
 baseurl: ""
-url: "http://localhost:4000" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://ritelg.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+# url: "https://ritelg.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 projects_img_url: "http://localhost:4000/images/projets"
-images_url: "http://localhost:4000/images"
+# projects_img_url: "https://ritelg.github.io/images/projets"
+images_url: "https://ritelg.github.io/images"
+#images_url: "http://localhost:4000/images"
 
 linkedin_url: "https://fr.linkedin.com/in/gaetan-ritel-4a210bbb"
 behance_url: "https://www.behance.net/ritelg31"
@@ -39,6 +42,7 @@ image: ""
 theme: minima
 sass:
   sass_dir: _sass
+  style: compressed
 collections:
   projets:
     output: true
