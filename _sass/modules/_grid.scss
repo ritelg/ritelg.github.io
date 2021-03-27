@@ -27,7 +27,9 @@
 .grid picture, .grid picture,
 .grid img, .grid img { width: 100%; }
 .grid figcaption p {
-    margin-bottom: 1em;
+    margin: 1em;
+    font-family: $font-secondary;
+  font-weight: 100;
 }
 .grid a figure.middle {
     aspect-ratio: 16/9;
