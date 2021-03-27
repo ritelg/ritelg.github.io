@@ -11,5 +11,5 @@ deploy: ## Build les assets et deploie le site
 	rm -Rf docs/*
 	cp -r ./_site/* ./docs/
 	git add .
-	git commit -m $(MESSAGE)
+	git commit -m "$(MESSAGE)"
 

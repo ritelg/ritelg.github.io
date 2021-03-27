@@ -18,27 +18,6 @@ let config = {
     module: {
         rules: [
             {
-                test: /\.(woff2?|eot|ttf|otf)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts'
-                    }
-                }]
-            }, {
-                test: /\.(png|jpg|jpeg|gif|svg)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: '[name].[ext]',
-                            outputPath: 'images'
-                        },
-                    },
-                ],
-            }, {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: [{
