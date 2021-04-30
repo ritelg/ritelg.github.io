@@ -1,5 +1,6 @@
 body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 .container {
   padding-left: 1rem;
@@ -15,7 +16,6 @@ picture.active {
 }
 video {
   border-radius: 5px;
-  overflow: hidden;
 }
 @media screen and (min-width: $width-labtop) {
   .container {
