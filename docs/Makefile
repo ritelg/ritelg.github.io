@@ -15,3 +15,11 @@ deploy: ## Build les assets et deploie le site
 	mv docs/htaccess docs/.htaccess
 	git add .
 	git commit -m "$(MESSAGE)"
+
+node_modules:
+	npm i
+
+ruby: 
+	sudo yum install ruby ruby-devel
+	gem install jekyll bundler
+	bundle install

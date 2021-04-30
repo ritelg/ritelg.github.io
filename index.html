@@ -8,23 +8,24 @@
 
 <body>
 
-<header>
-    <div class="container">
-        {%- include nav.html -%}
-        <div class="a-propos">
-            <h1>
-                <span class="light">{{ site.fullname }}</span>
-                Développeur & designer web
-            </h1>
-            <p>Titulaire d’un titre professionnel de web designer, autodidacte et en constante veille technologique, je conçois et réalise des supports de communication visuelle, des sites et des applications web.</p>
+    <header>
+        <div class="container">
+            {%- include nav.html -%}
+            <div class="a-propos">
+                <h1>
+                    <span class="light">{{ site.fullname }}</span>
+                    Développeur & designer web
+                </h1>
+                <p>Titulaire d’un titre professionnel de web designer, autodidacte et en constante veille technologique,
+                    je conçois et réalise des supports de communication visuelle, des sites et des applications web.</p>
 
-            <a href="{{ site.url }}/cv-gaetan-ritel.pdf" target="_blank" class="btn">Télécharger mon CV</a>
+                <a href="{{ site.url }}/cv-gaetan-ritel.pdf" target="_blank" class="btn">Télécharger mon CV</a>
+            </div>
         </div>
-    </div>
-</header>
-<section id="skills" class="skills container">
-    {% assign categories = site.categories | sort: "accueil_order" %}
-    {% for categorie in categories %}
+    </header>
+    <section id="skills" class="skills container">
+        {% assign categories = site.categories | sort: "accueil_order" %}
+        {% for categorie in categories %}
         <a href="{{ categorie.permalink }}">
             <figure>
                 <picture data-src="{{ categorie.img }}" data-ext="jpg">
@@ -39,33 +40,36 @@
                 </figcaption>
             </figure>
         </a>
-    {% endfor %}
-</section>
-<section class="a-la-une">
-    <h2>Projets à la une</h2>
-    <div class="grid">
+        {% endfor %}
+    </section>
+    <section class="a-la-une">
+        <h2>Projets à la une</h2>
+        <div class="grid">
 
 
-        {% assign projets = site.projets | sort: "accueil_order" %}
-        {% for projet in projets %}
+            {% assign projets = site.projets | sort: "accueil_order" %}
+            {% for projet in projets %}
 
-        {% if projet.accueil_order %}
+            {% if projet.accueil_order %}
             <a href="{{ projet.permalink }}" class="{% if projet.accueil_middle %}middle{% endif %}">
                 <figure>
                     <picture data-src="{{ projet.img }}" data-ext="jpg">
-                        <source media="(min-width: 1000px)" data-taille="" srcset="{{ site.url }}/images/rectangle16_9.svg">
-                        <source media="(min-width: 768px)" data-taille="large" srcset="{{ site.url }}/images/rectangle16_9.svg">
-                        <source media="(min-width: 450px)" data-taille="medium" srcset="{{ site.url }}/images/rectangle16_9.svg">
+                        <source media="(min-width: 1000px)" data-taille=""
+                            srcset="{{ site.url }}/images/rectangle16_9.svg">
+                        <source media="(min-width: 768px)" data-taille="large"
+                            srcset="{{ site.url }}/images/rectangle16_9.svg">
+                        <source media="(min-width: 450px)" data-taille="medium"
+                            srcset="{{ site.url }}/images/rectangle16_9.svg">
                         <img src="{{ site.url }}/images/rectangle16_9.svg" data-taille="small" alt="{{ projet.title }}">
                     </picture>
                     <figcaption>
                         <h3>{{ projet.title }}</h3>
                         <p class="light">
-                                {% for categorie in site.categories %}
-                                    {% if page.categories contains categorie.title %}
-                                    {{ categorie.title }},
-                                    {% endif %}
-                                {% endfor %}
+                            {% for categorie in site.categories %}
+                            {% if page.categories contains categorie.title %}
+                            {{ categorie.title }},
+                            {% endif %}
+                            {% endfor %}
                         </p>
                         {% if projet.accueil_middle != true %}
                         <p>{{ projet.description }}</p>
@@ -73,55 +77,68 @@
                     </figcaption>
                 </figure>
             </a>
-        {% endif %}
-        {% endfor %}
+            {% endif %}
+            {% endfor %}
 
-    </div>
-</section>
-<section class="avis container">
-    <h2>ce qu‘ils pensent de moi</h2>
-    <div class="avis-content">
-        <div class="avis-item">
-            <picture>
-                <img src="images/photo.jpg" alt="">
-            </picture>
-            <div class="content">
-                <h3>Rose lamego</h3>
-                <p class="link-site">rcdansepourtous.fr</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni tempora commodi dolor minus, quis
-                    pariatur veniam vero possimus recusandae, quaerat voluptatem ab et nam est hic voluptate nulla
-                    consequatur officia.</p>
+        </div>
+    </section>
+    <section class="avis container">
+        <h2>ce qu‘ils pensent de moi</h2>
+        <div class="avis-content">
+            <div class="avis-item">
+                <picture>
+                    <img src="images/photo.jpg" alt="">
+                </picture>
+                <div class="content">
+                    <h3>Rose lamego</h3>
+                    <a href="https://rcdansepourtous.fr/" class="link-site">rcdansepourtous.fr</p>
+                        <p>
+                            Nous sommes satisfaits du travail fait par Gaétan Ritel qui a crée notre site Internet "R&C
+                            DANSE POUR TOUS".
+                            Il a beaucoup travaillé et a toujours été à l'écoute de nos demandes.
+                        </p>
+                        <p>
+                            Nous sommes persuadés qu'il aura un beau parcours professionnel de par ses compétences, son sérieux et sa réactivité.
+                        </p>
+                        <p>
+                            Nous lui souhaitons une très bonne continuation et de belles expérience dans le domainec qu'il a choisit et bien sur nous continuerons à travailler avec lui dans le futur.
+                        </p>
+                        <p>
+                        L'équipe R&C Danse pour tous,
+                        Pink, Rose et Carlos
+                        </p>
+                </div>
             </div>
-        </div>
 
-    </div>
-</section>
-<section class="contact container" id="contact">
+        </div>
+    </section>
+    <section class="contact container" id="contact">
 
-    <div>
-        <h2>Me contacter</h2>
-        <p>
-            Vous avez une question ? <br>
-            Une demande pour un projet ?<br>
-            Vous pouvez utiliser le formulaire ci-dessous.
-        </p>
-    </div>
-    <form action="https://formspree.io/f/mlearagw" method="POST">
-        <div class="form-group email">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email">
+        <div>
+            <h2>Me contacter</h2>
+            <p>
+                Vous avez une question ? <br>
+                Une demande pour un projet ?<br>
+                Vous pouvez utiliser le formulaire ci-dessous.
+            </p>
         </div>
-        <div class="form-group subject">
-            <label for="subject">Sujet de votre demande</label>
-            <input type="text" name="subject" id="subject" placeholder="Sujet">
-        </div>
-        <div class="form-group message">
-            <label for="message">Message</label>
-            <textarea name="message" id="message">Message</textarea>
-        </div>
-        <button type="submit" class="btn">Envoyer</button>
-    </form>
-</section>
-{%- include footer.html -%}
+        <form action="https://formspree.io/f/mlearagw" method="POST">
+            <div class="form-group email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email">
+            </div>
+            <div class="form-group subject">
+                <label for="subject">Sujet de votre demande</label>
+                <input type="text" name="subject" id="subject" placeholder="Sujet">
+            </div>
+            <div class="form-group message">
+                <label for="message">Message</label>
+                <textarea name="message" id="message">Message</textarea>
+            </div>
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </section>
+    {%- include footer.html -%}
 </body>
+
 </html>
